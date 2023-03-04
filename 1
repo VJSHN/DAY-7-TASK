@@ -1,0 +1,35 @@
+Get all the countries from the Asia continent /region using the Filter function:
+var request =new XMLHttpRequest();
+request.open("GET", "https://restcountries.com/v3.1/all");
+request.send();
+request.onload= function(){
+var result = JSON.parse(request.response);
+var regions = result.filter(function(r){
+    console.log(r.region);
+});
+}
+
+Get all the countries with a population of less than 2 lakhs using Filter function:
+var request =new XMLHttpRequest();
+request.open("GET", "https://restcountries.com/v3.1/all");
+request.send();
+request.onload= function(){
+var result = JSON.parse(request.response);
+var population = result.filter(function(p){
+    if(p.population <= 200000){
+            console.log(p.region+ "_" + p.subregion+ ":" + p.population);
+    }
+});
+}
+
+Print the following details name, capital, flag using forEach function;
+
+var request =new XMLHttpRequest();
+request.open("GET", "https://restcountries.com/v3.1/all");
+request.send();
+request.onload= function(){
+var result = JSON.parse(request.response);
+var population = result.forEach(v => {
+                console.log(v.region + ":" + v.capital + ":"+ v.flag )
+});
+}
